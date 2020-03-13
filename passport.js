@@ -1,27 +1,22 @@
-const session = require('express-session');
+
+
 const passport = require('passport')
 const TwitterStrategy = require('passport-twitter').Strategy;
-const authRoutes = require('')
-
-app.use(session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: true
-}));
 
 
 // Configure the Twitter strategy for use by Passport.
 
-passport.use(new Strategy({
+passport.use(new TwitterStrategy({
     consumerKey: process.env['TWITTER_CONSUMER_KEY'],
     consumerSecret: process.env['TWITTER_CONSUMER_SECRET'],
     callbackURL: '/auth/twitter/success'
 },
     function (token, tokenSecret, profile, cb) {
-
-        User.findOrCreate({ twitterId: profile.id }, function (err, user) {
-            return cb(err, user);
-        });
+        console.log("USER AUTHENTICATED!")
+        console.log(profile);
+        // User.findOrCreate({ twitterId: profile.id }, function (err, user) {
+        //     return cb(err, user);
+        // });
     }));
 
 
@@ -41,3 +36,5 @@ passport.serializeUser(function (user, cb) {
 passport.deserializeUser(function (obj, cb) {
     cb(null, obj);
 });
+
+module.exports = passportStrategies;
