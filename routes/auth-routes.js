@@ -19,7 +19,6 @@ router.get('/twitter/callback',
 router.get('/twitter/success', (req,res)=>{
 console.log('AUTH SUCCESS ROUTE')
 res.render('../build/index.html')
-
 })
 
 //Twitter Failed
