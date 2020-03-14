@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const passport = require('passport');
+const path = require('path');
 const models = require('../models');
 const TwitterStrategy = require('passport-twitter').Strategy;
 require('dotenv').config();
@@ -11,15 +12,16 @@ router.get('/twitter',passport.authenticate('twitter'));
 //Twitter Callback
 router.get('/twitter/callback',
  passport.authenticate('twitter',
- {successRedirect:'/twitter/success',
- failureRedirect:'/twitter/failed'}));
+ {successRedirect:'/',
+ failureRedirect:'/auth/twitter/failed'}));
 
 
-//Twitter Success
-router.get('/twitter/success', (req,res)=>{
-console.log('AUTH SUCCESS ROUTE')
-res.render('../build/index.html')
-})
+//Twitter Success - COMPLETE WHEN REDIRECT ROUTE IS BUILT 
+//(display tweet that user wants to like to retweet)
+// router.get('/twitter/success', (req,res)=>{
+// console.log('AUTH SUCCESS ROUTE')
+//  res.sendFile(path.join(__dirname,'build/index.html'));
+// })
 
 //Twitter Failed
 router.get('/twitter/failed', (req,res)=>{
@@ -36,18 +38,23 @@ passport.use(new TwitterStrategy({
 },
     function (token, tokenSecret, profile, cb) {
         console.log("USER AUTHENTICATED!")
-        console.log(profile);
-        console.log(profile.id);
+        //console.log(profile);
         models.userInfo.findOrCreate({ 
             where:{
                 userID: profile.id,
                 userName: profile.username,
                 displayName: profile.displayName
                 } 
-                }).then ((err, user) =>{
-            return cb(err, user);
+                }).then ((user, err) =>{
+                    if (err){
+                        console.log("ERROR IF")
+                        return cb(err);
+                    }
+                    console.log("OUTSIDE ERROR IF")
+                    cb(null,user);
         });
-    }));
+    }
+    ));
 
 
 // Configure Passport authenticated session persistence.
