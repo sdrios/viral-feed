@@ -147,10 +147,10 @@ export class WebMapView extends React.Component {
             style: "classic"
           }),
           view: this.view,
-          expanded: true
+          expanded: false
         });
 
-        this.view.ui.add(legend, "top-right");
+        this.view.ui.add(legend, "top-left");
 
       });
   }
@@ -170,3 +170,4 @@ export class WebMapView extends React.Component {
 }
 
 export default WebMapView
+
