@@ -1,22 +1,34 @@
 const express = require('express');
+const session = require('express-session');
+const passport = require('passport');
 const path = require('path');
+const authRoutes = require('./routes/auth-routes');
+ 
+require('dotenv').config();
 
 const app = express();
+const PORT = process.env.port || 8080;
+
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
-
-const PORT = process.env.port || 8080;
-
-app.get('api/hello', (req,res)=>{
-    res.send('my api route');
-})
+app.use('/auth', authRoutes); //include auth routes
 
 app.use(express.static(path.join(__dirname,'build')));
 
-app.get('*', (req,res)=>{
+app.get('/', (req,res)=>{
+    console.log('star route')
     res.sendFile(path.join(__dirname,'build/index.html'));
 })
+
 
 app.listen(PORT, ()=>{
 
