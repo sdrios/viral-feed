@@ -9,8 +9,8 @@ import { mapLoaded } from "../redux/reducers/map";
 import Map from "./esri/map/Map";
 import LoadScreen from "./LoadScreen";
 import Nav from "./Nav";
-import Sidebar from './Sidebar'
-// import "../styles/index.css"
+import SideNav from './Sidebar'
+// import Timeline from './Twitter'
 
 // Styled Components
 import styled from "styled-components";
@@ -36,14 +36,14 @@ const MapWrapper = styled.div`
 
 const RightPanel = styled.div`
 height: 100%; 
-width: 160px; 
+width: 200px; 
 position: fixed; 
 z-index: 1; 
 top: 0; 
 right: 0;
 background-color: #0000; 
 overflow-x: hidden;
-padding-top: 20px
+padding-top: 60px;
 `;
 
 // Component definition
@@ -54,15 +54,15 @@ const Main = props => {
   return (
     <Container>
       <LoadScreen isLoading={!isMapLoaded} />
-      <Nav>    
+      <Nav>
       </Nav>
       <MapWrapper>
         <Map onMapLoaded={mapLoaded} mapConfig={config.mapConfig} />
-        </MapWrapper>
-        <RightPanel>
-          <Sidebar>
-          </Sidebar>
-          </RightPanel>
+      </MapWrapper>
+      <RightPanel>
+        <SideNav>
+        </SideNav>
+      </RightPanel>
     </Container>
   );
 };
