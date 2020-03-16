@@ -1,0 +1,19 @@
+{
+  "appVersion": "2.0.0",
+
+  "apiUrl": "api",
+  "loginUrl": "api/auth/arcgis",
+  "logoutUrl": "api/logout",
+  "jsapiUrl": "https://js.arcgis.com/4.12/",
+  "jsapiV4": true,
+
+  "clientId": "hkdtqXBMmZ8JJ5tD",
+
+  "sessionId": "esri-react-boot_session",
+
+  "mapConfig": {
+    "basemap": "dark-gray-vector",
+    "center": [-95, 38],
+    "zoom": 4
+  }
+}
