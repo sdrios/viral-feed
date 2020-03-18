@@ -6,10 +6,7 @@ function App() {
   return (
     
     <div className ="main-div">
-      
-       <WebMapView>
-   </WebMapView>
-   
+   <Tweet></Tweet>
     </div>
   );
 }
