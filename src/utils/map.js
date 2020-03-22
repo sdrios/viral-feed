@@ -1,9 +1,9 @@
 import { loadModules } from "esri-loader";
 
 export function loadMap(element, mapOptions) {
-  return loadModules(['esri/Map', 'esri/views/MapView', 'esri/layers/FeatureLayer', 'esri/widgets/Legend', 'esri/widgets/Expand'], {
+  return loadModules(['esri/Map', 'esri/views/MapView', 'esri/layers/FeatureLayer', 'esri/widgets/Feature', 'esri/widgets/Legend', 'esri/widgets/Expand', 'esri/widgets/BasemapToggle'], {
     css: true
-  }).then(([Map, MapView, FeatureLayer, Legend, Expand]) => {
+  }).then(([Map, MapView, FeatureLayer, Feature, Legend, Expand, BasemapToggle]) => {
     if (!element) {
       // component or app was likely destroyed
       return;
@@ -17,11 +17,12 @@ export function loadMap(element, mapOptions) {
       container: element,
       map: map,
       zoom: 2,
+      center:[0,0],
       popup: {
         dockEnabled: true,
         dockOptions: {
           position: "bottom",
-          breakpoint: false
+          breakpoint: true
         }
       }
     });
@@ -114,7 +115,11 @@ export function loadMap(element, mapOptions) {
 
     map.add(featureLayer);
 
-    // Add new point feature layer
+    //Add feature graphic
+
+
+
+    // Add new point feature layer - deaths layer
     var featureLayerPoint = new FeatureLayer({
       url:
         "https://services1.arcgis.com/0MSEUqKaxRlEPj5g/arcgis/rest/services/ncov_cases/FeatureServer",
@@ -143,10 +148,10 @@ export function loadMap(element, mapOptions) {
         style: "classic"
       }),
       view: view,
-      expanded: false
-    });
+      expanded: false    });
 
     view.ui.add(legend, "top-left");
+
 
 
     // wait for the view to load TODO: may not need this?

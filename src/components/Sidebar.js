@@ -1,57 +1,32 @@
 // React imports
 import React, { Component } from 'react';
+import Panel, {
+  PanelTitle,
+  PanelText
+} from 'calcite-react/Panel'
 
-import SideNav, {
-  SideNavTitle,
-  SideNavLink
-} from 'calcite-react/SideNav'
 
-import { TwitterTimelineEmbed, TwitterShareButton, TwitterFollowButton, TwitterHashtagButton, TwitterMentionButton, TwitterTweetEmbed, TwitterMomentShare, TwitterDMButton, TwitterVideoEmbed, TwitterOnAirButton } from 'react-twitter-embed';
+import { TwitterTimelineEmbed, TwitterHashtagButton } from 'react-twitter-embed';
 
-class Sidebar extends Component {
+class TweetSidebar extends Component {
   render() {
     return (
-      <div className="sidebar">
-
+      <Panel>
+        <PanelTitle>WHO Updates</PanelTitle>       
+         <TwitterHashtagButton tag="COVID19" options={{ size: 'large', screenName: null, buttonHashtag: null }} />
         <TwitterTimelineEmbed
-          sourceType="profile"
-          screenName="CDCgov"
-          theme='dark'
-          options={{ height: 350 }}
-        />
-        <TwitterTimelineEmbed
-          sourceType="profile"
+          sourceType="timeline"
           screenName="WHO"
           theme='dark'
-          options={{ height: 350 }}
+          noHeader
+          noFooter
+          noScrollbar
+          options={{ height: 600, tweetLimit:50 }}
         />
+      </Panel>
 
-      </div>
     );
   }
 }
 
-export default Sidebar;
-
-// // React imports
-// import React, { Component } from 'react';
-
-// import SideNav, {
-//     SideNavTitle,
-//     SideNavLink
-//   } from 'calcite-react/SideNav'
-
-
-// class Sidebar extends Component {
-//   render() {
-//     return (
-//       <div>
-//             <SideNav>
-//             <SideNavTitle>Twitter</SideNavTitle>
-//             </SideNav>
-//       </div>
-//     );
-//   }
-// }
-
-// export default Sidebar;
+export default TweetSidebar;

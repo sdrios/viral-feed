@@ -8,8 +8,11 @@ import { loadMap } from "../../../utils/map";
 import styled from "styled-components";
 
 const Container =styled.div`
+float:left;
 height: 100%;
-margin-right: 160px
+width:60%;
+padding:0;
+margin:0;
 `;
 
 // Component
@@ -23,7 +26,7 @@ const Map = props => {
     props.onMapLoaded();
   });
 
-  // Comopnent template
+  // Component template
   return <Container id={containerID}>
   </Container>
 };
