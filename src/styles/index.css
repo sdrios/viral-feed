@@ -1,20 +1,13 @@
     html,
 
-    body{
-      padding: 0;
-      margin: 0;
-      height: 100%;
-      width: 100%;
-      overflow: hidden;
-    }
-
-    #viewDiv {
-      padding: 0;
-      margin: 0;
-      height: 100%;
-      width: calc(100% - 205px);
-      overflow: hidden;
-    }
+  
+ #viewDiv {
+        float: left;
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        width: 70%;
+      }
 
     .overlay {
       height: 100%;
@@ -78,14 +71,15 @@
       padding:0px;
     }
 
-.Side {
-  height: 100%; /* Full-height: remove this if you want "auto" height */
-  width: 160px; 
- position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-z-index: 1; /* Stay on top */
-top: 0; /* Stay at the top */
-left: 0;
-background-color: #111; /* Black */
- overflow-x: hidden; /* Disable horizontal scroll */
-padding-top: 20px
+.sidebar{
+height: 100%; 
+width: 200px; 
+position: fixed; 
+z-index: 1; 
+top: 0; 
+right: 0;
+background-color: #0000; 
+overflow-x: hidden;
+padding-top: 60px;
+
 }

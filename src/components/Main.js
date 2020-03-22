@@ -9,11 +9,12 @@ import { mapLoaded } from "../redux/reducers/map";
 import Map from "./esri/map/Map";
 import LoadScreen from "./LoadScreen";
 import Nav from "./Nav";
-import SideNav from './Sidebar'
+import Sidebar from './Sidebar'
 // import Timeline from './Twitter'
 
 // Styled Components
 import styled from "styled-components";
+
 
 const Container = styled.div`
   display: flex;
@@ -31,7 +32,7 @@ const MapWrapper = styled.div`
   position: relative;
   z-index: 0;
   overflow: hidden;
-  margin-right:160px
+
 `;
 
 const RightPanel = styled.div`
@@ -46,24 +47,28 @@ overflow-x: hidden;
 padding-top: 60px;
 `;
 
+
 // Component definition
 const Main = props => {
   const config = useSelector(state => state.config);
   const isMapLoaded = useSelector(state => state.map.loaded);
 
   return (
-    <Container>
+      <Container>
       <LoadScreen isLoading={!isMapLoaded} />
       <Nav>
       </Nav>
-      <MapWrapper>
+     <MapWrapper>
         <Map onMapLoaded={mapLoaded} mapConfig={config.mapConfig} />
-      </MapWrapper>
-      <RightPanel>
-        <SideNav>
-        </SideNav>
-      </RightPanel>
-    </Container>
+       <RightPanel>
+        <Sidebar>
+        </Sidebar>
+        </RightPanel>
+     
+     </MapWrapper>
+   
+     </Container>
+   
   );
 };
 

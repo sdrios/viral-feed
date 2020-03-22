@@ -11,21 +11,21 @@ import { TwitterTimelineEmbed, TwitterShareButton, TwitterFollowButton, TwitterH
 class Sidebar extends Component {
   render() {
     return (
-      <div>
-        <SideNav>
-          <TwitterTimelineEmbed
-            sourceType="profile"
-            screenName="CDCgov"
-            theme='dark'
-            options={{ height: 350 }}
-          />
-                    <TwitterTimelineEmbed
-            sourceType="profile"
-            screenName="WHO"
-            theme='dark'
-            options={{ height: 350 }}
-          />
-        </SideNav>
+      <div className="sidebar">
+
+        <TwitterTimelineEmbed
+          sourceType="profile"
+          screenName="CDCgov"
+          theme='dark'
+          options={{ height: 350 }}
+        />
+        <TwitterTimelineEmbed
+          sourceType="profile"
+          screenName="WHO"
+          theme='dark'
+          options={{ height: 350 }}
+        />
+
       </div>
     );
   }
