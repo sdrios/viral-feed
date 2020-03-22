@@ -18,9 +18,6 @@ const Nav = styled(TopNav)`
   }
 `;
 
-const NavList = styled(TopNavList)`
-  text-align: left;
-`;
 
 
 // Component definition

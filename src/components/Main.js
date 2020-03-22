@@ -11,6 +11,12 @@ import TweetSidebar from './Sidebar'
 // Styled Components
 import styled from "styled-components";
 
+import Panel, {
+  PanelTitle,
+  PanelText
+} from 'calcite-react/Panel'
+
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -20,18 +26,33 @@ const Container = styled.div`
   text-align: center;
 `;
 
+const ContentContainer = styled.div`
+  display: flex;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  overflow:hidden;
+`;
 
 const RightPanel = styled.div`
-height: 100%; 
-width: 20%; 
-float:right;
-position: fixed; 
-z-index: 1; 
-top: 0; 
-right: 0;
-background-color: #0000; 
-overflow-x: hidden;
-padding-top: 60px;
+ display:flex;
+ float: right;
+width: 20%;
+height: 100%;
+padding: 1em;
+background-color:black;
+overflow:hidden;
+`;
+
+const LeftPanel = styled.div`
+ display:flex;
+ float: left;
+width: 20%;
+height: 100%;
+padding: 1em;
+background-color:black;
+overflow:hidden;
+
 `;
 
 
@@ -45,11 +66,23 @@ const Main = props => {
       <LoadScreen isLoading={!isMapLoaded} />
       <Nav>
       </Nav>
+      <ContentContainer>
+        <LeftPanel>
+          <Panel>
+            <PanelTitle>
+              Status
+            </PanelTitle>
+            <div id="visualizations">
+                DATA GOES HERE
+            </div>
+          </Panel>
+        </LeftPanel>
         <Map onMapLoaded={mapLoaded} mapConfig={config.mapConfig} />
-      <RightPanel>
-        <TweetSidebar>
-        </TweetSidebar>
-      </RightPanel>
+        <RightPanel>
+          <TweetSidebar>
+          </TweetSidebar>
+        </RightPanel>
+      </ContentContainer>
     </Container>
 
   );

@@ -11,9 +11,10 @@ import { TwitterTimelineEmbed, TwitterHashtagButton } from 'react-twitter-embed'
 class TweetSidebar extends Component {
   render() {
     return (
-      <Panel>
-        <PanelTitle>WHO Updates</PanelTitle>       
-         <TwitterHashtagButton tag="COVID19" options={{ size: 'large', screenName: null, buttonHashtag: null }} />
+     
+        <Panel>  
+          <PanelTitle>Talk about it</PanelTitle> 
+        <TwitterHashtagButton tag="COVID19" options={{ size: 'large', screenName: null, buttonHashtag: null }} />
         <TwitterTimelineEmbed
           sourceType="timeline"
           screenName="WHO"
@@ -21,9 +22,9 @@ class TweetSidebar extends Component {
           noHeader
           noFooter
           noScrollbar
-          options={{ height: 600, tweetLimit:50 }}
+          autoHeight
         />
-      </Panel>
+    </Panel>
 
     );
   }
