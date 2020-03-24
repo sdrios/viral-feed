@@ -29,7 +29,7 @@ ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter basename={basename}>
       <CalciteThemeProvider>
-        <GlobalStyle />
+        <GlobalStyle/>
         <Route path="/" component={App} />
       </CalciteThemeProvider>
     </BrowserRouter>

@@ -1,57 +1,32 @@
 // React imports
 import React, { Component } from 'react';
+import Panel, {
+  PanelTitle
+} from 'calcite-react/Panel'
 
-import SideNav, {
-  SideNavTitle,
-  SideNavLink
-} from 'calcite-react/SideNav'
+import { TwitterTimelineEmbed, TwitterHashtagButton } from 'react-twitter-embed';
 
-import { TwitterTimelineEmbed, TwitterShareButton, TwitterFollowButton, TwitterHashtagButton, TwitterMentionButton, TwitterTweetEmbed, TwitterMomentShare, TwitterDMButton, TwitterVideoEmbed, TwitterOnAirButton } from 'react-twitter-embed';
-
-class Sidebar extends Component {
+class TweetSidebar extends Component {
   render() {
     return (
-      <div>
-        <SideNav>
-          <TwitterTimelineEmbed
-            sourceType="profile"
-            screenName="CDCgov"
-            theme='dark'
-            options={{ height: 350 }}
-          />
-                    <TwitterTimelineEmbed
-            sourceType="profile"
-            screenName="WHO"
-            theme='dark'
-            options={{ height: 350 }}
-          />
-        </SideNav>
-      </div>
+     
+        <Panel>  
+        <PanelTitle>COVID-19 Feed</PanelTitle> 
+        <TwitterHashtagButton tag="COVID19" options={{ size: 'large', screenName: null, buttonHashtag: null }} />
+        <div className="selfCenter" style={{width: 250,height: 510}}>
+        <TwitterTimelineEmbed
+          sourceType="profile"
+          screenName="WHO"
+          theme='dark'
+          noHeader
+          noFooter
+          noScrollbar
+          autoHeight
+        />
+        </div>
+    </Panel>
     );
   }
 }
 
-export default Sidebar;
-
-// // React imports
-// import React, { Component } from 'react';
-
-// import SideNav, {
-//     SideNavTitle,
-//     SideNavLink
-//   } from 'calcite-react/SideNav'
-
-
-// class Sidebar extends Component {
-//   render() {
-//     return (
-//       <div>
-//             <SideNav>
-//             <SideNavTitle>Twitter</SideNavTitle>
-//             </SideNav>
-//       </div>
-//     );
-//   }
-// }
-
-// export default Sidebar;
+export default TweetSidebar;

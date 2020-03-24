@@ -3,10 +3,7 @@ import React from "react";
 
 // Component imports
 import TopNav from "calcite-react/TopNav";
-import TopNavBrand from "calcite-react/TopNav/TopNavBrand";
 import TopNavTitle from "calcite-react/TopNav/TopNavTitle";
-import TopNavList from "calcite-react/TopNav/TopNavList";
-import TopNavLink from "calcite-react/TopNav/TopNavLink";
 import { useSelector, useDispatch } from "react-redux";
 
 // Styled Components
@@ -19,13 +16,8 @@ const Nav = styled(TopNav)`
   }
 `;
 
-const NavList = styled(TopNavList)`
-  text-align: left;
-`;
-
-
 // Component definition
-const Navbar = props => {
+ const Navbar = props => {
   const auth = useSelector(state => state.auth);
   const config = useSelector(state => state.config);
   const dispatch = useDispatch();
@@ -33,8 +25,6 @@ const Navbar = props => {
   return (
       <Nav>
         <TopNavTitle>COVID-19 Tracker</TopNavTitle>
-        <NavList>
-        </NavList>
       </Nav>
   )};
 

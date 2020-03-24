@@ -79,8 +79,8 @@ const App = props => {
   // App is initialized and user is authenticated if needed, route to main component
   return (
     <>
-      <Route path="/main" component={Main} />
-      <Redirect to="/main" />
+      <Route path="/" component={Main} />
+      <Redirect to="/"/>
     </>
   );
 };

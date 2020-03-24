@@ -1,19 +1,21 @@
 // React imports
 import React from "react";
-
 // Redux imports
 import { useSelector } from "react-redux";
 import { mapLoaded } from "../redux/reducers/map";
-
 // Component imports
 import Map from "./esri/map/Map";
 import LoadScreen from "./LoadScreen";
 import Nav from "./Nav";
-import SideNav from './Sidebar'
-// import Timeline from './Twitter'
-
+import TweetSidebar from './Sidebar';
+import Visualizations from './Visualizations';
+import PieChart from './PieChart';
 // Styled Components
 import styled from "styled-components";
+
+import Panel from 'calcite-react/Panel'
+
+
 
 const Container = styled.div`
   display: flex;
@@ -21,30 +23,32 @@ const Container = styled.div`
   position: absolute;
   width: 100%;
   height: 100%;
-  text-align: center;
 `;
 
-const MapWrapper = styled.div`
+const ContentContainer = styled.div`
   display: flex;
-  flex: 1;
-  flex-direction: column;
-  position: relative;
-  z-index: 0;
-  overflow: hidden;
-  margin-right:160px
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  overflow:hidden;
 `;
 
 const RightPanel = styled.div`
-height: 100%; 
-width: 200px; 
-position: fixed; 
-z-index: 1; 
-top: 0; 
-right: 0;
-background-color: #0000; 
-overflow-x: hidden;
-padding-top: 60px;
+ display:flex;
+ float: right;
+width: 20%;
+padding: 1em;
+background-color:black;
 `;
+
+const LeftPanel = styled.div`
+ display:flex;
+ float: left;
+width: 30%;
+padding: 1em;
+background-color:black;
+`;
+
 
 // Component definition
 const Main = props => {
@@ -56,15 +60,25 @@ const Main = props => {
       <LoadScreen isLoading={!isMapLoaded} />
       <Nav>
       </Nav>
-      <MapWrapper>
+      <ContentContainer>
+        <LeftPanel>
+          <Panel>
+            <Visualizations />
+            <PieChart />
+          </Panel>
+        </LeftPanel>
         <Map onMapLoaded={mapLoaded} mapConfig={config.mapConfig} />
-      </MapWrapper>
-      <RightPanel>
-        <SideNav>
-        </SideNav>
-      </RightPanel>
+        <RightPanel>
+          <TweetSidebar>
+          </TweetSidebar>
+        </RightPanel>
+      </ContentContainer>
     </Container>
+
   );
 };
 
 export default Main;
+
+
+
