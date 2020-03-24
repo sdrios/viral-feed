@@ -13,9 +13,7 @@ import PieChart from './PieChart';
 // Styled Components
 import styled from "styled-components";
 
-import Panel, {
-
-} from 'calcite-react/Panel'
+import Panel from 'calcite-react/Panel'
 
 
 
@@ -25,7 +23,6 @@ const Container = styled.div`
   position: absolute;
   width: 100%;
   height: 100%;
-  
 `;
 
 const ContentContainer = styled.div`
@@ -40,21 +37,16 @@ const RightPanel = styled.div`
  display:flex;
  float: right;
 width: 20%;
-height: 100%;
 padding: 1em;
 background-color:black;
-overflow:hidden;
 `;
 
 const LeftPanel = styled.div`
  display:flex;
  float: left;
 width: 30%;
-height: 100%;
 padding: 1em;
 background-color:black;
-overflow:hidden;
-
 `;
 
 
@@ -71,8 +63,8 @@ const Main = props => {
       <ContentContainer>
         <LeftPanel>
           <Panel>
-          <Visualizations/>
-          <PieChart/>
+            <Visualizations />
+            <PieChart />
           </Panel>
         </LeftPanel>
         <Map onMapLoaded={mapLoaded} mapConfig={config.mapConfig} />

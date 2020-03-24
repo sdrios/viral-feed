@@ -16,19 +16,19 @@ class PieChart extends Component {
         let chart = am4core.create("chart2", am4charts.PieChart);
         chart.data =
             [{
-  "country": "Lithuania",
-  "litres": 501.9
-}, {
-  "country": "Czechia",
-  "litres": 301.9
-}, {
-  "country": "Ireland",
-  "litres": 201.1
-}];
+                "category": "Cases",
+                "number": 43112
+            },{
+                "category": "Deaths",
+                "number": 557
+            },  {
+                "category": "Recoveries",
+                "number": 178
+            }];
 
         var pieSeries = chart.series.push(new am4charts.PieSeries());
-        pieSeries.dataFields.value = "litres";
-        pieSeries.dataFields.category = "country";
+        pieSeries.dataFields.value = "number";
+        pieSeries.dataFields.category = "category";
         pieSeries.slices.template.tooltipPosition = "pointer";
 
         this.chart = chart;
@@ -37,14 +37,7 @@ class PieChart extends Component {
 
     render() {
         return (
-            <div>
-                <Panel>
-                    <PanelText>
-                    Pie Chart 
-                    </PanelText>
-                    <div id="chart2"></div>
-                </Panel>
-            </div>
+            <div id="chart2" ></div>
         );
     }
 }

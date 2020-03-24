@@ -5,6 +5,8 @@ import Panel, {
   PanelText
 } from 'calcite-react/Panel';
 
+import PieChart from './PieChart'
+
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
@@ -68,7 +70,8 @@ class Visualizations extends Component {
         { date: "2020-3-19", confirmed: 13677, deaths: 200, recovered: 0 },
         { date: "2020-3-20", confirmed: 19100, deaths: 244, recovered: 0 },
         { date: "2020-3-21", confirmed: 25489, deaths: 307, recovered: 0 },
-        { date: "2020-3-22", confirmed: 33272, deaths: 417, recovered: 0 }]
+        { date: "2020-3-22", confirmed: 33272, deaths: 417, recovered: 0 },
+        {date:"2020-3-23", confirmed: 43847, deaths: 557, recoverred:178}]
 
     //create axes
     var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
@@ -100,12 +103,20 @@ class Visualizations extends Component {
   render() {
     return (
       <div>
-        <PanelTitle>Stats</PanelTitle>
+        <PanelTitle>United States Statistics</PanelTitle>
         <Panel>
           <PanelText>
-            Number of Reported Cases in US since February
+            Number of Reported Cases Since February
       </PanelText>
           <div id="chart"></div>
+        </Panel>
+        <Panel>
+          <PanelText>Confirmed Cases Breakdown</PanelText>
+          <PieChart></PieChart>
+          <span>As of 03/23/20</span>
+        </Panel>
+        <Panel>
+          <span>Data Source: https://github.com/pomber/covid19</span>
         </Panel>
       </div>
     );

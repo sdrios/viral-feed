@@ -1,9 +1,11 @@
 import { loadModules } from "esri-loader";
 
-export function loadMap(element) {
-  return loadModules(['esri/Map', 'esri/views/MapView', 'esri/layers/FeatureLayer', 'esri/widgets/Feature', 'esri/widgets/Legend', 'esri/widgets/Expand', 'esri/widgets/BasemapToggle', 'esri/popup/content/PieChartMediaInfo'], {
+export function loadMap(element, mapOptions) {
+  return loadModules(['esri/Map', 'esri/views/MapView', 'esri/layers/FeatureLayer', 'esri/widgets/Legend', 'esri/widgets/Expand'], {
     css: true
-  }).then(([Map, MapView, FeatureLayer, Legend, Expand, BasemapToggle, PieChartMediaInfo]) => {
+  })
+  
+  .then(([Map, MapView, FeatureLayer, Legend, Expand]) => {
     if (!element) {
       // component or app was likely destroyed
       return;
@@ -17,21 +19,19 @@ export function loadMap(element) {
       container: element,
       map: map,
       zoom: 2,
-      center: [0, 0],
       popup: {
-        dockEnabled: false
+        dockEnabled: true,
+        dockOptions: {
+          position: "bottom",
+          breakpoint: false
+        }
       }
     });
 
     var template = {
       // autocasts as new PopupTemplate()
-      title: "Cases in {Province_State} {Country_Region}",
+      title: "Cases",
       content: [
-         { // TextContentElement
-          type: "text",
-          text:
-            "There are {Confirmed} Confirmed Cases and {Recovered} have recovered."
-        },
         {
           type: "fields",
           fieldInfos: [
@@ -54,13 +54,30 @@ export function loadMap(element) {
             },
             {
               //esriFieldTypeDouble
+              fieldName: "Lat",
+              label: "Lat",
+              format: {
+                digitSeparator: false,
+                places: 2
+              }
+            },
+            {
+              //esriFieldTypeDouble
+              fieldName: "Long_",
+              label: "Long",
+              format: {
+                digitSeparator: false,
+                places: 2
+              }
+            },
+            {
+              //esriFieldTypeDouble
               fieldName: "Confirmed",
               label: "Confirmed",
               format: {
                 digitSeparator: true,
                 places: 0
-              },
-              statisticType: "sum"
+              }
             },
             {
               //esriFieldTypeDouble
@@ -80,13 +97,17 @@ export function loadMap(element) {
                 places: 0
               }
             }
-          ] //End Features array
+          ]
+        },
+        {
+          type:"text",
+          text:"<a target='_blank' href=https://services1.arcgis.com/0MSEUqKaxRlEPj5g/ArcGIS/rest/services/ncov_cases/FeatureServer>Data Source</a> "
         }
-       
       ]
     };
 
-   //create cases feature layer
+    // Reference the popupTemplate instance in the
+    // popupTemplate property of FeatureLayer
     var featureLayer = new FeatureLayer({
       url:
         "https://services1.arcgis.com/0MSEUqKaxRlEPj5g/ArcGIS/rest/services/ncov_cases/FeatureServer",
@@ -97,9 +118,10 @@ export function loadMap(element) {
       popupTemplate: template,
     });
 
+
     map.add(featureLayer);
 
-   //create deaths feature layer
+    // Add new point feature layer
     var featureLayerPoint = new FeatureLayer({
       url:
         "https://services1.arcgis.com/0MSEUqKaxRlEPj5g/arcgis/rest/services/ncov_cases/FeatureServer",
@@ -130,7 +152,16 @@ export function loadMap(element) {
       view: view,
       expanded: false
     });
+
     view.ui.add(legend, "top-left");
- //end  of .then from loadMap function
+
+
+    // wait for the view to load TODO: may not need this?
+    return view.when(() => {
+      // return a reference to the view
+      return view;
+    });
+
+    
   });
 }

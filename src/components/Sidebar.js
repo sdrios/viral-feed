@@ -1,9 +1,8 @@
 // React imports
 import React, { Component } from 'react';
 import Panel, {
-  PanelTitle,
+  PanelTitle
 } from 'calcite-react/Panel'
-
 
 import { TwitterTimelineEmbed, TwitterHashtagButton } from 'react-twitter-embed';
 
@@ -12,10 +11,11 @@ class TweetSidebar extends Component {
     return (
      
         <Panel>  
-          <PanelTitle>Talk about it</PanelTitle> 
+        <PanelTitle>COVID-19 Feed</PanelTitle> 
         <TwitterHashtagButton tag="COVID19" options={{ size: 'large', screenName: null, buttonHashtag: null }} />
+        <div className="selfCenter" style={{width: 250,height: 510}}>
         <TwitterTimelineEmbed
-          sourceType="timeline"
+          sourceType="profile"
           screenName="WHO"
           theme='dark'
           noHeader
@@ -23,8 +23,8 @@ class TweetSidebar extends Component {
           noScrollbar
           autoHeight
         />
+        </div>
     </Panel>
-
     );
   }
 }

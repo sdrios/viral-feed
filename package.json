@@ -9,7 +9,6 @@
     "@esri/arcgis-rest-feature-layer": "^2.10.0",
     "@esri/arcgis-rest-portal": "^2.6.1",
     "@esri/arcgis-rest-request": "^2.6.1",
-    "@esri/cedar": "^1.0.1",
     "@esri/react-arcgis": "^5.0.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
@@ -45,6 +44,10 @@
     "sequelize": "^5.21.5",
     "styled-components": "^4.4.1"
   },
+  "engines": {
+    "node": "12.16.0",
+    "npm": "6.13.4"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -57,14 +60,15 @@
   },
   "browserslist": {
     "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
+      ">1%",
+      "last 4 versions",
+      "Firefox ESR",
+      "not ie < 11"
     ],
     "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
+      "last 2 chrome version",
+      "last 2 firefox version",
+      "last 2 safari version"
     ]
   },
   "devDependencies": {

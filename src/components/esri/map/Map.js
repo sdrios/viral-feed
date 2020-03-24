@@ -8,7 +8,6 @@ import { loadMap } from "../../../utils/map";
 import styled from "styled-components";
 
 const Container =styled.div`
-
 height:100%;
 width:50%;
 padding:0;

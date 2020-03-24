@@ -16,10 +16,8 @@ const Nav = styled(TopNav)`
   }
 `;
 
-
-
 // Component definition
-const Navbar = props => {
+ const Navbar = props => {
   const auth = useSelector(state => state.auth);
   const config = useSelector(state => state.config);
   const dispatch = useDispatch();
