@@ -7,10 +7,10 @@ const authRoutes = require('./routes/auth-routes');
 require('dotenv').config();
 
 const app = express();
-const PORT = process.env.port || 8080;
+const PORT = 8080;
 
 app.use(session({
-    secret: process.env.SESSION_SECRET,
+    secret: iliketurtles,
     resave: false,
     saveUninitialized: true
 }));
