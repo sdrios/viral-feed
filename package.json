@@ -4,9 +4,12 @@
   "private": true,
   "homepage": "/",
   "dependencies": {
+    "@amcharts/amcharts4": "^4.9.10",
     "@esri/arcgis-rest-auth": "^2.6.1",
+    "@esri/arcgis-rest-feature-layer": "^2.10.0",
     "@esri/arcgis-rest-portal": "^2.6.1",
     "@esri/arcgis-rest-request": "^2.6.1",
+    "@esri/cedar": "^1.0.1",
     "@esri/react-arcgis": "^5.0.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",

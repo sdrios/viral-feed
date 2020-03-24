@@ -7,7 +7,9 @@ import { mapLoaded } from "../redux/reducers/map";
 import Map from "./esri/map/Map";
 import LoadScreen from "./LoadScreen";
 import Nav from "./Nav";
-import TweetSidebar from './Sidebar'
+import TweetSidebar from './Sidebar';
+import Visualizations from './Visualizations';
+import PieChart from './PieChart';
 // Styled Components
 import styled from "styled-components";
 
@@ -17,13 +19,14 @@ import Panel, {
 } from 'calcite-react/Panel'
 
 
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   position: absolute;
   width: 100%;
   height: 100%;
-  text-align: center;
+  
 `;
 
 const ContentContainer = styled.div`
@@ -47,7 +50,7 @@ overflow:hidden;
 const LeftPanel = styled.div`
  display:flex;
  float: left;
-width: 20%;
+width: 30%;
 height: 100%;
 padding: 1em;
 background-color:black;
@@ -69,12 +72,8 @@ const Main = props => {
       <ContentContainer>
         <LeftPanel>
           <Panel>
-            <PanelTitle>
-              Status
-            </PanelTitle>
-            <div id="visualizations">
-                DATA GOES HERE
-            </div>
+          <Visualizations/>
+          <PieChart/>
           </Panel>
         </LeftPanel>
         <Map onMapLoaded={mapLoaded} mapConfig={config.mapConfig} />

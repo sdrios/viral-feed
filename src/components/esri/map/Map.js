@@ -8,9 +8,9 @@ import { loadMap } from "../../../utils/map";
 import styled from "styled-components";
 
 const Container =styled.div`
-float:left;
+
 height:100%;
-width:60%;
+width:50%;
 padding:0;
 margin:0;
 background-color:black;
