@@ -14,8 +14,7 @@ import PieChart from './PieChart';
 import styled from "styled-components";
 
 import Panel, {
-  PanelTitle,
-  PanelText
+
 } from 'calcite-react/Panel'
 
 

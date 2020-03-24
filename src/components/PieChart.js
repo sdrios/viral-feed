@@ -1,7 +1,6 @@
 // React imports
 import React, { Component } from 'react';
 import Panel, {
-    PanelTitle,
     PanelText
 } from 'calcite-react/Panel';
 

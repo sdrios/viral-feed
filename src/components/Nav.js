@@ -4,8 +4,6 @@ import React from "react";
 // Component imports
 import TopNav from "calcite-react/TopNav";
 import TopNavTitle from "calcite-react/TopNav/TopNavTitle";
-import TopNavList from "calcite-react/TopNav/TopNavList";
-import TopNavLink from "calcite-react/TopNav/TopNavLink";
 import { useSelector, useDispatch } from "react-redux";
 
 // Styled Components

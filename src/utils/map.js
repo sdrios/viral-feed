@@ -1,9 +1,9 @@
 import { loadModules } from "esri-loader";
 
-export function loadMap(element, mapOptions) {
+export function loadMap(element) {
   return loadModules(['esri/Map', 'esri/views/MapView', 'esri/layers/FeatureLayer', 'esri/widgets/Feature', 'esri/widgets/Legend', 'esri/widgets/Expand', 'esri/widgets/BasemapToggle', 'esri/popup/content/PieChartMediaInfo'], {
     css: true
-  }).then(([Map, MapView, FeatureLayer, Feature, Legend, Expand, BasemapToggle, PieChartMediaInfo]) => {
+  }).then(([Map, MapView, FeatureLayer, Legend, Expand, BasemapToggle, PieChartMediaInfo]) => {
     if (!element) {
       // component or app was likely destroyed
       return;
