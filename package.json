@@ -14,7 +14,7 @@
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "arcgis-react-redux-legend": "^3.0.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "calcite-react": "^0.44.0",
     "cra-build-watch": "^3.2.0",
     "dotenv": "^8.2.0",
